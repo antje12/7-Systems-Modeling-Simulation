@@ -1,4 +1,5 @@
 import random as rand
+import math as math
 
 a_1 = 101427
 c_1 = 321 # Step
@@ -30,15 +31,50 @@ def pyNative():
         result.append(r)
     return result
 
-print("What you wanna do? 1: Native, 2: LCM, 3: LCM RANDU")
-
 input = input()
 
-if input == "1":
-    print(pyNative())
-elif input == "2":
-    print(lcm(a_1, c_1, m_1))
-elif input == "3":
-    print(lcm(a_1, c_1, m_1))
-else: 
-    print("Wrong input!")
+resultNative = pyNative()
+resultLcm1 = lcm(a_1, c_1, m_1)
+resultLcm2 = lcm(a_2, c_2, m_2)
+
+print("Kolmogorov-Smirnov Test!")
+result = resultNative[0:100]
+result.sort()
+N = len(result)
+
+D_plus = 0
+for index in range(0, N):
+    R = result[index]
+    D = (index / N) - R
+    D_plus = max(D_plus, D)
+
+D_minus = 0
+for index in range(0, N):
+    R = result[index]
+    D = R - ((index-1) / N)
+    D_minus = max(D_minus, D)
+
+D = max(D_plus, D_minus)
+alfa = 0.05
+Da = 1.36/(math.sqrt(N))
+
+if (D <= Da):
+    print("Accept H0!")
+else:
+    print("Reject H0!")
+
+
+print("Chi-Squared Test!")
+result = resultNative
+result.sort()
+N = len(result)
+
+Ks = []
+
+for index in range(0, N):
+    R = result[index]
+    if 0 <= R and R < 0.1:
+        
+
+
+# Compare to Uniform distribution!
