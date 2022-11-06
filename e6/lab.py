@@ -1,5 +1,6 @@
 import random as rand
 import math as math
+from scipy.stats import chi2
 
 a = 101427
 c = 321 # Step
@@ -57,10 +58,11 @@ alfa = 0.05
 Da = 1.36/(math.sqrt(N))
 
 if (D <= Da):
-    print("D = ", D)
     print("Accept H0!")
 else:
     print("Reject H0!")
+
+
 
 print("Chi-Squared Test!")
 result = result_Lcm
@@ -128,7 +130,7 @@ for i in range(1, len(observed)+1):
     E = expected[i]
     X += ((O - E)**2)/E
 
-Xa = 124.342 #???
+Xa = chi2.ppf(.95, df=(N-1))
 
 if (X <= Xa):
     print("Accept H0!")
