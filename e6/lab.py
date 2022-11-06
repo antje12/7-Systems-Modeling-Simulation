@@ -36,6 +36,8 @@ result_Native = pyNative()
 result_Lcm = lcm(a, c, m)
 result_Randu_Lcm = lcm(a_r, c_r, m_r)
 
+#//////////////////////////////////////////////
+
 print("Kolmogorov-Smirnov Test!")
 result = result_Randu_Lcm[0:100]
 result.sort()
@@ -62,7 +64,7 @@ if (D <= Da):
 else:
     print("Reject H0!")
 
-
+#//////////////////////////////////////////////
 
 print("Chi-Squared Test!")
 result = result_Lcm
@@ -136,3 +138,5 @@ if (X <= Xa):
     print("Accept H0!")
 else:
     print("Reject H0!")
+
+#//////////////////////////////////////////////
