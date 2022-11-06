@@ -36,7 +36,7 @@ result_Lcm = lcm(a, c, m)
 result_Randu_Lcm = lcm(a_r, c_r, m_r)
 
 print("Kolmogorov-Smirnov Test!")
-result = result_Lcm[0:100]
+result = result_Randu_Lcm[0:100]
 result.sort()
 N = len(result)
 
@@ -57,10 +57,10 @@ alfa = 0.05
 Da = 1.36/(math.sqrt(N))
 
 if (D <= Da):
+    print("D = ", D)
     print("Accept H0!")
 else:
     print("Reject H0!")
-
 
 print("Chi-Squared Test!")
 result = result_Lcm
@@ -70,28 +70,10 @@ uniform.sort()
 N = len(result)
 
 observed = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 0,
-  7: 0,
-  8: 0,
-  9: 0,
-  10: 0
+  1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0
 }
 expected = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 0,
-  7: 0,
-  8: 0,
-  9: 0,
-  10: 0
+  1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0
 }
 
 for index in range(0, N):
