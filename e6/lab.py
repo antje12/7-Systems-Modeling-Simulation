@@ -44,14 +44,14 @@ result.sort()
 N = len(result)
 
 D_plus = 0
-for index in range(0, N):
-    R = result[index]
+for index in range(1, N+1):
+    R = result[index-1]
     D = (index / N) - R
     D_plus = max(D_plus, D)
 
 D_minus = 0
-for index in range(0, N):
-    R = result[index]
+for index in range(1, N+1):
+    R = result[index-1]
     D = R - ((index-1) / N)
     D_minus = max(D_minus, D)
 
