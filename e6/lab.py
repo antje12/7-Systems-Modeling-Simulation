@@ -39,7 +39,7 @@ result_Randu_Lcm = lcm(a_r, c_r, m_r)
 #//////////////////////////////////////////////
 
 print("Kolmogorov-Smirnov Test!")
-result = result_Lcm[0:100]
+result = lcm(a, c, m)[0:100]
 result.sort()
 N = len(result)
 
@@ -72,10 +72,8 @@ else:
 #//////////////////////////////////////////////
 
 print("Chi-Squared Test!")
-result = result_Lcm
-uniform = result_Native
+result = lcm(a, c, m)
 result.sort()
-uniform.sort()
 N = len(result)
 
 observed = {
@@ -129,3 +127,57 @@ else:
 
 #//////////////////////////////////////////////
 
+print("Runs Test!")
+result = lcm(a, c, m)
+N = len(result)
+
+sequence = []
+
+for index in range(0, N-1):
+    i1 = result[index]
+    i2 = result[index+1]
+    if (i1 < i2):
+        sequence.append("<")
+    if (i1 > i2):
+        sequence.append(">")
+
+i = {}
+symbol = ""
+count = 0
+for index in range(0, len(sequence)):
+    if symbol == "":
+        symbol = sequence[index]
+        count = 1
+    elif symbol != sequence[index]:
+        if count in i:
+            i[count] += 1
+        else:
+            i[count] = 1
+        symbol = sequence[index]
+        count = 1
+    elif symbol == sequence[index]:
+        count += 1
+
+# remember to save last sequence!
+if count in i:
+    i[count] += 1
+else:
+    i[count] = 1
+
+X = 0
+for index in range(1, len(i)+1):
+    O = i[index]
+    E = (2/math.factorial(index+3))*(N*(index**2+3*index+1)-(index**3+3*index**2-index-4))
+    X += ((O - E)**2)/E
+
+print("Chi^2 value ", X)
+
+DoF = len(i)-1
+Xa = chi2.ppf(.95, df=DoF)
+print("Degree of freedom ", DoF)
+print("Critical value ", Xa)
+
+if (X <= Xa):
+    print("Accept H0!")
+else:
+    print("Reject H0!")
