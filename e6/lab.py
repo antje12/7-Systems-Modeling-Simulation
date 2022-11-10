@@ -39,7 +39,7 @@ result_Randu_Lcm = lcm(a_r, c_r, m_r)
 #//////////////////////////////////////////////
 
 print("Kolmogorov-Smirnov Test!")
-result = result_Randu_Lcm[0:100]
+result = result_Lcm[0:100]
 result.sort()
 N = len(result)
 
@@ -56,8 +56,13 @@ for index in range(1, N+1):
     D_minus = max(D_minus, D)
 
 D = max(D_plus, D_minus)
+print("D+ ", D_plus)
+print("D- ", D_minus)
+print("D ", D)
+
 alfa = 0.05
 Da = 1.36/(math.sqrt(N))
+print("Critical value ", Da)
 
 if (D <= Da):
     print("Accept H0!")
@@ -77,7 +82,7 @@ observed = {
   1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0
 }
 expected = {
-  1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0
+  1:1000, 2:1000, 3:1000, 4:1000, 5:1000, 6:1000, 7:1000, 8:1000, 9:1000, 10:1000
 }
 
 for index in range(0, N):
@@ -103,28 +108,6 @@ for index in range(0, N):
     elif R < 1:
         observed[10] += 1
 
-    R = uniform[index]
-    if R < 0.1:
-        expected[1] += 1
-    elif R < 0.2:
-        expected[2] += 1
-    elif R < 0.3:
-        expected[3] += 1
-    elif R < 0.4:
-        expected[4] += 1
-    elif R < 0.5:
-        expected[5] += 1
-    elif R < 0.6:
-        expected[6] += 1
-    elif R < 0.7:
-        expected[7] += 1
-    elif R < 0.8:
-        expected[8] += 1
-    elif R < 0.9:
-        expected[9] += 1
-    elif R < 1:
-        expected[10] += 1
-
 X = 0
 l = len(observed)
 for i in range(1, len(observed)+1):
@@ -132,7 +115,12 @@ for i in range(1, len(observed)+1):
     E = expected[i]
     X += ((O - E)**2)/E
 
-Xa = chi2.ppf(.95, df=(N-1))
+print("Chi^2 value ", X)
+
+DoF = len(observed)-1
+Xa = chi2.ppf(.95, df=DoF)
+print("Degree of freedom ", DoF)
+print("Critical value ", Xa)
 
 if (X <= Xa):
     print("Accept H0!")
@@ -140,3 +128,4 @@ else:
     print("Reject H0!")
 
 #//////////////////////////////////////////////
+
