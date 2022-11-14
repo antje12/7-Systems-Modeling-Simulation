@@ -181,3 +181,26 @@ if (X <= Xa):
     print("Accept H0!")
 else:
     print("Reject H0!")
+
+#//////////////////////////////////////////////
+
+print("Autocorrelation Test!")
+result = lcm(a, c, m)
+m = 128
+i = 3
+N = len(result)
+M = ((N-i)/m)-1
+M = math.floor(M)
+
+Sum = 0
+for k in range(0, M+1):
+    R1 = result[i+k*m]
+    R2 = result[i+(k+1)*m]
+    Sum += R1*R2
+
+Rho = (1/(M+1))*(Sum)-0.25
+Sigma = (math.sqrt(13*M+7))/(12*(M+1))
+
+Z = Rho / Sigma
+
+test = 1
