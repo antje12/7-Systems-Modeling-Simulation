@@ -209,8 +209,15 @@ def Autocorrelation_Test(a, c, m):
     Sigma = (math.sqrt(13*M+7))/(12*(M+1))
 
     Z = Rho / Sigma
+    Z_a = -1.96
 
-    test = 1
+    print("Z value ", Z)
+    print("Critical value ", Z_a)
+
+    if (Z_a <= Z and Z <= (-1)*Z_a):
+        print("Accept H0!")
+    else:
+        print("Reject H0!")
 #//////////////////////////////////////////////
 Autocorrelation_Test(a, c, m)
 print()
