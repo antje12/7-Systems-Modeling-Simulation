@@ -194,7 +194,7 @@ def Autocorrelation_Test(a, c, m):
     print("Autocorrelation Test! (a=",a," c=",c," m=", m)
     result = lcm(a, c, m)
     m = 128
-    i = 3
+    i = 3-1 # Handle Python 0-based arrays
     N = len(result)
     M = ((N-i)/m)-1
     M = math.floor(M)
