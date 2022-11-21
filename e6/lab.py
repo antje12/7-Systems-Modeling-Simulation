@@ -63,7 +63,7 @@ def Kolmogoro_Smirnov_Test(a, c, m):
     print("D+ ", D_plus)
     print("D- ", D_minus)
     print("D ", D)
-    print("Critical value ", Da)
+    #print("Critical value ", Da)
 
     if (D <= Da):
         print("Accept H0!")
@@ -116,9 +116,9 @@ def Chi_Squared_Test(a, c, m):
     DoF = len(observed)-1
     Xa = chi2.ppf(.95, df=DoF)
 
-    print("Chi^2 value ", X)
     print("Degree of freedom ", DoF)
-    print("Critical value ", Xa)
+    print("Chi^2 value ", X)
+    #print("Critical value ", Xa)
 
     if (X <= Xa):
         print("Accept H0!")
@@ -176,9 +176,9 @@ def Runs_Test(a, c, m):
     DoF = len(i)-1
     Xa = chi2.ppf(.95, df=DoF)
 
-    print("Chi^2 value ", X)
     print("Degree of freedom ", DoF)
-    print("Critical value ", Xa)
+    print("Chi^2 value ", X)
+    #print("Critical value ", Xa)
 
     if (X <= Xa):
         print("Accept H0!")
@@ -212,7 +212,7 @@ def Autocorrelation_Test(a, c, m):
     Z_a = -1.96
 
     print("Z value ", Z)
-    print("Critical value ", Z_a)
+    #print("Critical value ", Z_a)
 
     if (Z_a <= Z and Z <= (-1)*Z_a):
         print("Accept H0!")
