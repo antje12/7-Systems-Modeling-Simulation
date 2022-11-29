@@ -66,7 +66,7 @@ def Kolmogoro_Smirnov_Test(a, c, m):
     #print("Critical value ", Da)
 
     if (D <= Da):
-        print("Accept H0!")
+        print("Fail to reject H0!")
     else:
         print("Reject H0!")
 #//////////////////////////////////////////////
@@ -121,7 +121,7 @@ def Chi_Squared_Test(a, c, m):
     #print("Critical value ", Xa)
 
     if (X <= Xa):
-        print("Accept H0!")
+        print("Fail to reject H0!")
     else:
         print("Reject H0!")
 #//////////////////////////////////////////////
@@ -181,7 +181,7 @@ def Runs_Test(a, c, m):
     #print("Critical value ", Xa)
 
     if (X <= Xa):
-        print("Accept H0!")
+        print("Fail to reject H0!")
     else:
         print("Reject H0!")
 #//////////////////////////////////////////////
@@ -215,7 +215,7 @@ def Autocorrelation_Test(a, c, m):
     #print("Critical value ", Z_a)
 
     if (Z_a <= Z and Z <= (-1)*Z_a):
-        print("Accept H0!")
+        print("Fail to reject H0!")
     else:
         print("Reject H0!")
 #//////////////////////////////////////////////
