@@ -1,7 +1,7 @@
 clc
 clear
 close all
-trainSeqNumber = 50;    %number of training sequences - Test with 50, 60, 70, 80, 90, 100
+trainSeqNumber = 80;    %number of training sequences - Test with 50, 60, 70, 80, 90, 100
 testSeqNumber = 5;      %number of testing sequences
 
 
@@ -40,12 +40,12 @@ end
 % init param
 %A_init = rand(3,3,2);
 
-A_init(:,:,1) = [0.8 0.1 0.1;
-                0.1 0.8 0.1;
-                0.1 0.1 0.8]; 
-A_init(:,:,2) = [0.1 0.8 0.1;
-                0.1 0.1 0.8;
-                0.8 0.1 0.1];
+A_init(:,:,1) = [0.90 0.10 0.00;  
+                0.00 0.90 0.10;  
+                0.00 0.10 0.90];  
+A_init(:,:,2) = [0.00 0.75 0.25;  
+                0.00 0.25 0.75;  
+                0.75 0.25 0.00];
 
 B_init1 = rand(3,3);
 B_init2 = rand(3,3);
